@@ -27,7 +27,7 @@ router.post('/post', isAuthenticated, async (req, res, next) => {
 })
 
 router.post('/comment', isAuthenticated, async (req, res) => {
-  const { _id, answer } = req.body
+  const { _id, comment } = req.body
 
   try {
     const pUpdated = await Post.findOneAndUpdate({ _id }, { comment }, { useFindAndModify: true })
@@ -36,6 +36,5 @@ router.post('/comment', isAuthenticated, async (req, res) => {
     res.send(`comment add error with post ${_id}: `, err)
   }
 })
-
 
 module.exports = router

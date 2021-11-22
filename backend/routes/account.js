@@ -63,4 +63,16 @@ router.post('/logout', isAuthenticated, (req, res) => {
   res.send('user is logged out')
 })
 
+router.post('/friend', isAuthenticated, async (req, res) => {
+  const { _id } = req.body
+
+  try {
+    const user = await User.findOneAndUpdate({ _id }, { useFindAndModify: true })
+    const { friends } = user
+    friends.push(_id)
+  } catch (err) {
+    res.send('error when adding friend')
+  }
+})
+
 module.exports = router
