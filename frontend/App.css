@@ -1,0 +1,107 @@
+/* Global Styles */
+
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+    color: black;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* Text */
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  /* h1, h2, h3, h4, h5 {
+    font-weight: lighter; */
+    /* padding: 10px;
+  } */
+  
+  p {
+    font-size: 14px;
+  }
+  
+  /* Input */
+
+  form {
+      padding: 10px;
+      /*border: solid;*/
+  }
+  
+  input {
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #BDBDBD;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    display: block;
+    text-transform: none;
+  }
+
+  .formLabel {
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold
+  }
+
+  textarea {
+    margin-bottom: 10px;
+  }
+  
+  /* Button */
+  .button, button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #4baae0;
+    color: white;
+    border: none;
+    margin-right: 8px;
+  }
+  
+  .button:hover, button:hover {
+    opacity: 0.8;
+    font-weight: normal;
+  }
+  
+  .button:disabled, button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+
+  div {
+      margin: 10px;
+  }
+
+  .topright {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 14px;
+  }
+
+
+
