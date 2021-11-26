@@ -2,7 +2,7 @@
 For my final project, I am building a social networking site for photography. 
 Users will be able to create profiles and post their content, and can also add friends and see their content and interact with it on their home feed. 
 
-### Milestone 1 work
+### Milestone 1 (complete)
 1. Set up mongodb
 2. Develop user and post schemas for backend
 3. Code API routes
