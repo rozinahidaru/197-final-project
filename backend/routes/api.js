@@ -20,9 +20,9 @@ router.post('/post', isAuthenticated, async (req, res, next) => {
 
   try {
     const post = await Post.create({ postText, author: user })
-    res.send(`question add success: ${post}`)
+    res.send(`post add success: ${post}`)
   } catch (err) {
-    next('question add error')
+    next('post add error')
   }
 })
 

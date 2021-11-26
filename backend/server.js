@@ -36,9 +36,13 @@ app.get('/favicon.ico', (req, res) => {
   res.status(404).send()
 })
 
-// set the initial entry point
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'))
+// set the initial entry point ADD BACK WITH FRONTEND
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../dist/index.html'))
+// })
+
+app.get('/', (req, res) => {
+  res.send('hello world')
 })
 
 app.use(isAuthenticated)
