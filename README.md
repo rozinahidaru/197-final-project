@@ -7,7 +7,7 @@ Users will be able to create profiles and post their content, and can also add f
 2. Develop user and post schemas for backend
 3. Code API routes
 
-### Milestone 2
+### Milestone 2 (complete)
 1. Develop frontend pages for signup, login, profile
 2. Functionality for adding posts
 3. Create home page feed

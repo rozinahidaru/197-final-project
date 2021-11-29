@@ -63,7 +63,7 @@ router.post('/logout', isAuthenticated, (req, res) => {
   res.send('user is logged out')
 })
 
-router.post('/friend', isAuthenticated, async (req, res) => {
+router.post('/friend', isAuthenticated, async (req, res, next) => {
   const { _id } = req.body
 
   try {
@@ -71,7 +71,18 @@ router.post('/friend', isAuthenticated, async (req, res) => {
     const { friends } = user
     friends.push(_id)
   } catch (err) {
-    res.send('error when adding friend')
+    next('error when adding friend')
+  }
+})
+
+router.get('/:username?', async (req, res, next) => {
+  const { username } = req.query // or param?
+  try {
+    const user = await User.findOne({ username })
+    console.log(user)
+    // res.json(user)
+  } catch (err) {
+    next(`error getting user ${username}`)
   }
 })
 

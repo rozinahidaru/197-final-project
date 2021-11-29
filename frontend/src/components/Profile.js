@@ -42,7 +42,11 @@ const Profile = props => {
 
   return (
     <>
-      <h2>Your profile</h2>
+      <h2>
+        Your profile:
+        {' '}
+        {username}
+      </h2>
 
       {/* <div className="topright">
         <p>{loggedIn ? `Hi ${username}` : ''}</p>
