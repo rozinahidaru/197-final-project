@@ -22,7 +22,7 @@ const Signup = () => {
 
   return (
     <>
-      <h1>Signup Page</h1>
+      <h1>Sign Up</h1>
       <br />
       Username:
       <br />
