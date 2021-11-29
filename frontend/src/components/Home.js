@@ -4,11 +4,13 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 import Profile from './Profile'
+import AddPost from './AddPost'
 
 const Home = () => {
   const [data, setData] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
   const [username, setUsername] = useState('')
+  // const [show, setShow] = useState(false)
 
   const navigate = useNavigate()
 
@@ -73,6 +75,10 @@ const Home = () => {
       {loggedIn
         ? <button type="button">Add a post</button>
         : <button type="button" onClick={() => navigate('/login')}>Log in to add a post</button>}
+
+      {/* {show
+        ? <AddPost setShow={setShow} />
+        : null} */}
 
       <h2>Posts</h2>
     </>

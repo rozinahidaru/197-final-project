@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
   })
 })
 
-router.post('/post', isAuthenticated, async (req, res, next) => {
+router.post('/add', isAuthenticated, async (req, res, next) => {
   const { postText } = req.body
   const user = req.session.username
 
