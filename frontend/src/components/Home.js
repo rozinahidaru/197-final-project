@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom'
 
 import Profile from './Profile'
 import AddPost from './AddPost'
+import Post from './Post'
 
 const Home = () => {
   const [data, setData] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
   const [username, setUsername] = useState('')
-  // const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false)
 
   const navigate = useNavigate()
 
@@ -56,7 +57,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Post Your Photos</h1>
+      <h1>Instagram Lite</h1>
 
       <div className="topright">
         <p>{loggedIn ? `Hi ${username}` : ''}</p>
@@ -73,14 +74,18 @@ const Home = () => {
       </div>
 
       {loggedIn
-        ? <button type="button">Add a post</button>
+        ? <button type="button" onClick={() => setShow(true)}>Add a post</button>
         : <button type="button" onClick={() => navigate('/login')}>Log in to add a post</button>}
 
-      {/* {show
+      {show
         ? <AddPost setShow={setShow} />
-        : null} */}
+        : null}
 
       <h2>Posts</h2>
+
+      {data.map(p => (
+        <Post loggedIn={loggedIn} post={p} key={p._id} />
+      ))}
     </>
   )
 }

@@ -20,6 +20,10 @@ const AddPost = props => {
   return (
     <>
       <h3>Add a post!</h3>
+      <input onChange={e => setPostText(e.target.value)} />
+      <br />
+      <button type="button" onClick={addPost} style={{ marginRight: 8 }}>Post</button>
+      <button type="button" onClick={handleClose}>Cancel</button>
     </>
   )
 }

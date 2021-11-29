@@ -16,6 +16,7 @@ const Post = props => {
   const addComment = async () => {
     try {
       await axios.post('posts/comment', { _id: post._id, comment })
+      setComment('')
     } catch (err) {
       alert('Error when commenting')
     }
@@ -25,7 +26,33 @@ const Post = props => {
 
   return (
     <>
-      <h3>the post</h3>
+      <h3><i>{post.postText}</i></h3>
+      <div style={{ marginLeft: 8 }}>
+        <h4>
+          Author:
+          {' '}
+          <span style={{ fontWeight: 'normal' }}>
+            {post.author}
+          </span>
+        </h4>
+        <h4>
+          Comment:
+          <span style={{ fontWeight: 'normal' }}>
+            {' '}
+            {post.comment}
+          </span>
+        </h4>
+      </div>
+      {(loggedIn)
+        ? (
+          <>
+            <p>Add a comment</p>
+            <input onChange={e => setComment(e.target.value)} value={comment} />
+            <br />
+            <button type="button" onClick={addComment}>Comment</button>
+          </>
+        )
+        : null}
     </>
   )
 }
