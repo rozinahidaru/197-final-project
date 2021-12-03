@@ -12,6 +12,7 @@ const Home = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [username, setUsername] = useState('')
   const [show, setShow] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
 
   const navigate = useNavigate()
 
@@ -53,7 +54,7 @@ const Home = () => {
     }
   }
 
-  const goToProfile = () => <Profile username={username} />
+  const goToProfile = () => setShowProfile(true)
 
   return (
     <>
@@ -64,12 +65,14 @@ const Home = () => {
         {loggedIn
           ? (
             <>
-              <button type="button" onClick={goToProfile}>Go to your profile</button>
+              <button type="button" onClick={goToProfile}>See your profile</button>
               <br />
               <br />
               <button type="button" onClick={logoutUser}>Logout</button>
             </>
           )
+          : null}
+        {showProfile ? <Profile username={username} setShowProfile={setShowProfile} />
           : null}
       </div>
 

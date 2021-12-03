@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+import Post from './Post'
+
 const Profile = props => {
   // const { loggedIn, user } = props
-  const { username } = props
-  // const [username, setUsername] = useState('')
+  const { username, setShowProfile } = props
   const [data, setData] = useState([])
   const [userPosts, setUserPosts] = useState([])
 
@@ -30,28 +31,22 @@ const Profile = props => {
     return () => clearInterval(intervalID)
   }, [])
 
-  const logoutUser = async () => {
-    // eslint-disable-next-line no-shadow
-    const { data } = await axios.post('/account/logout')
-    if (data === 'user is logged out') {
-      // setLoggedIn(false)
-    } else {
-      alert('error when logging user out')
-    }
-  }
+  const handleClose = () => setShowProfile(false)
 
   return (
     <>
-      <h2>
+      <h3>
         Your profile:
         {' '}
         {username}
-      </h2>
+      </h3>
 
-      {/* <div className="topright">
-        <p>{loggedIn ? `Hi ${username}` : ''}</p>
-        {loggedIn ? <button type="button" onClick={logoutUser}>Logout</button> : <p />}
-      </div> */}
+      <h3>Your posts</h3>
+
+      {userPosts.map(p => (
+        <Post post={p} key={p._id} />
+      ))}
+      <button type="button" onClick={handleClose}>Close</button>
     </>
   )
 }
