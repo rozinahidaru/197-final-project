@@ -39,46 +39,49 @@ const Post = props => {
 
   return (
     <>
-      <h3><i>{post.author}</i></h3>
-      <img src={post.photo} alt="" width="400" height="250" />
-      <div style={{ marginLeft: 8 }}>
-        {/* <h4>
+      <div style={{ borderStyle: 'outset', borderRadius: 25, display: 'inline-block' }}>
+        <h3><i>{post.author}</i></h3>
+        <img src={post.photo} alt="" width="400" height="250" />
+        <div style={{ marginLeft: 8 }}>
+          {/* <h4>
           Author:
           {' '}
           <span style={{ fontWeight: 'normal' }}>
             {post.author}
           </span>
         </h4> */}
-        <p>{post.postText}</p>
-        {(post.likes)
-          ? (
-            <p>
-              {post.likes}
+          <p>{post.postText}</p>
+          {(post.likes)
+            ? (
+              <p>
+                {post.likes}
+                {' '}
+                likes
+              </p>
+            )
+            : (
+              <p>0 likes</p>
+            )}
+          {(loggedIn) ? <button type="button" onClick={updateLikes}>Like</button>
+            : null }
+          <h4>
+            Comment:
+            <span style={{ fontWeight: 'normal' }}>
               {' '}
-              likes
-            </p>
-          )
-          : (
-            <p>0 likes</p>
-          )}
-        <button type="button" onClick={updateLikes}>Like</button>
-        <h4>
-          Comment:
-          <span style={{ fontWeight: 'normal' }}>
-            {' '}
-            {post.comment}
-          </span>
-        </h4>
-        {(loggedIn)
-          ? (
-            <>
-              <p>Add a comment</p>
-              <input onChange={e => setComment(e.target.value)} value={comment} />
-              <br />
-              <button type="button" onClick={addComment}>Comment</button>
-            </>
-          )
-          : null}
+              {post.comment}
+            </span>
+          </h4>
+          {(loggedIn)
+            ? (
+              <>
+                <p>Add a comment</p>
+                <input onChange={e => setComment(e.target.value)} value={comment} />
+                <br />
+                <button type="button" onClick={addComment}>Comment</button>
+              </>
+            )
+            : null}
+        </div>
       </div>
     </>
   )

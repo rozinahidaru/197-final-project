@@ -84,7 +84,7 @@ const Home = () => {
         ? <AddPost setShow={setShow} />
         : null}
 
-      <h2>Posts</h2>
+      <h2>Your Feed</h2>
 
       {data.map(p => (
         <Post loggedIn={loggedIn} post={p} key={p._id} />
