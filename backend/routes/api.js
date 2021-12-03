@@ -17,9 +17,12 @@ router.get('/', (req, res, next) => {
 router.post('/add', isAuthenticated, async (req, res, next) => {
   const { postText, photo } = req.body
   const user = req.session.username
+  const likes = 0
 
   try {
-    const post = await Post.create({ postText, author: user, photo })
+    const post = await Post.create({
+      postText, author: user, photo, likes,
+    })
     res.send(`post add success: ${post}`)
   } catch (err) {
     next('post add error')

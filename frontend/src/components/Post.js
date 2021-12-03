@@ -22,20 +22,46 @@ const Post = props => {
     }
   }
 
-  // const updateLikes (add as bonus feature)
+  // (add as bonus feature)
+  const updateLikes = async () => {
+    const currLikes = post.likes
+    // if (currLikes === null) {
+    //   currLikes = 0
+    // }
+    setLikes(currLikes + 1)
+
+    try {
+      await axios.post('posts/like', { _id: post._id, likes })
+    } catch (err) {
+      alert('error when adding like')
+    }
+  }
 
   return (
     <>
-      <h3><i>{post.postText}</i></h3>
-      <img src={post.photo} alt="" />
+      <h3><i>{post.author}</i></h3>
+      <img src={post.photo} alt="" width="400" height="250" />
       <div style={{ marginLeft: 8 }}>
-        <h4>
+        {/* <h4>
           Author:
           {' '}
           <span style={{ fontWeight: 'normal' }}>
             {post.author}
           </span>
-        </h4>
+        </h4> */}
+        <p>{post.postText}</p>
+        {(post.likes)
+          ? (
+            <p>
+              {post.likes}
+              {' '}
+              likes
+            </p>
+          )
+          : (
+            <p>0 likes</p>
+          )}
+        <button type="button" onClick={updateLikes}>Like</button>
         <h4>
           Comment:
           <span style={{ fontWeight: 'normal' }}>
@@ -43,17 +69,17 @@ const Post = props => {
             {post.comment}
           </span>
         </h4>
+        {(loggedIn)
+          ? (
+            <>
+              <p>Add a comment</p>
+              <input onChange={e => setComment(e.target.value)} value={comment} />
+              <br />
+              <button type="button" onClick={addComment}>Comment</button>
+            </>
+          )
+          : null}
       </div>
-      {(loggedIn)
-        ? (
-          <>
-            <p>Add a comment</p>
-            <input onChange={e => setComment(e.target.value)} value={comment} />
-            <br />
-            <button type="button" onClick={addComment}>Comment</button>
-          </>
-        )
-        : null}
     </>
   )
 }
