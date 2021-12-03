@@ -36,6 +36,9 @@ const Post = props => {
           </span>
         </h4>
         <h4>
+          <img src={post.photo} alt="" />
+        </h4>
+        <h4>
           Comment:
           <span style={{ fontWeight: 'normal' }}>
             {' '}
