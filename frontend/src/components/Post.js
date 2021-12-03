@@ -27,6 +27,7 @@ const Post = props => {
   return (
     <>
       <h3><i>{post.postText}</i></h3>
+      <img src={post.photo} alt="" />
       <div style={{ marginLeft: 8 }}>
         <h4>
           Author:
@@ -34,9 +35,6 @@ const Post = props => {
           <span style={{ fontWeight: 'normal' }}>
             {post.author}
           </span>
-        </h4>
-        <h4>
-          <img src={post.photo} alt="" />
         </h4>
         <h4>
           Comment:

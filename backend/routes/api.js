@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
 
 router.post('/add', isAuthenticated, async (req, res, next) => {
   const { postText, photo } = req.body
-  console.log(req.body)
   const user = req.session.username
 
   try {
@@ -35,6 +34,16 @@ router.post('/comment', isAuthenticated, async (req, res) => {
     res.send(`comment added success to post ${_id}`)
   } catch (err) {
     res.send(`comment add error with post ${_id}: `, err)
+  }
+})
+
+router.post('/like', isAuthenticated, async (req, res, next) => {
+  const { _id, likes } = req.body
+  try {
+    const pUpdated = await Post.findOneAndUpdate({ _id }, { likes }, { useFindAndModify: true })
+    res.send(`likes update success to post ${_id}`)
+  } catch (err) {
+    next('update like error')
   }
 })
 

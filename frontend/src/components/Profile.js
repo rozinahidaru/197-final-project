@@ -36,12 +36,10 @@ const Profile = props => {
   return (
     <>
       <h3>
-        Your profile:
-        {' '}
         {username}
+        {'\'s '}
+        posts
       </h3>
-
-      <h3>Your posts</h3>
 
       {userPosts.map(p => (
         <Post post={p} key={p._id} />
