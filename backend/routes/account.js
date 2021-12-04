@@ -1,8 +1,30 @@
 const express = require('express')
-const isAuthenticated = require('../middlewares/isAuthenticated')
 
 const router = express.Router()
+
+const FACEBOOK_APP_ID = 390631619521248
+const FACEBOOK_APP_SECRET = '6650a669f9a1d88591988f7637a9dfa5'
+
+const passport = require('passport')
+const FacebookStrategy = require('passport-facebook').Strategy
+
 const User = require('../models/user')
+
+passport.use(new FacebookStrategy({
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: 'http://localhost:3000/auth/facebook/callback',
+},
+((accessToken, refreshToken, profile, done) => {
+  User.findOrCreate({ username: profile.username }, (err, user) => {
+    if (err) {
+      return done(err)
+    }
+    return done(null, user)
+  })
+})))
+
+const isAuthenticated = require('../middlewares/isAuthenticated')
 
 router.get('/all', async (req, res) => {
   try {

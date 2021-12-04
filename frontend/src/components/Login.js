@@ -34,6 +34,8 @@ const Login = () => {
       <br />
       <button type="button" onClick={loginUser}>Login</button>
       <nav>
+        <br />
+        <a href="account/auth/facebook">Login with Facebook</a>
         <p>
           Don&#39;t have an account?
           <Link to="../signup"> Sign up!</Link>

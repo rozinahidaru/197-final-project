@@ -4,6 +4,12 @@ const mongoose = require('mongoose')
 const session = require('cookie-session')
 const path = require('path')
 
+const FACEBOOK_APP_ID = 390631619521248
+const FACEBOOK_APP_SECRET = '6650a669f9a1d88591988f7637a9dfa5'
+
+const passport = require('passport')
+const FacebookStrategy = require('passport-facebook').Strategy
+
 const AccountRouter = require('./routes/account')
 const ApiRouter = require('./routes/api')
 
@@ -36,7 +42,7 @@ app.get('/favicon.ico', (req, res) => {
   res.status(404).send()
 })
 
-// set the initial entry point ADD BACK WITH FRONTEND
+// set the initial entry point
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'))
 })
@@ -44,6 +50,16 @@ app.get('*', (req, res) => {
 // app.get('/', (req, res) => {
 //   res.send('hello world')
 // })
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook'))
+
+app.get('account/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/')
+  })
 
 app.use(isAuthenticated)
 
