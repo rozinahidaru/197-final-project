@@ -89,8 +89,9 @@ const Home = () => {
             <>
               <div id="myModal" className="modal">
                 <div className="modal-content">
-                <span className="close" onClick={closeModal}>&times;</span>
+                  {/* <span className="close" onClick={closeModal}>&times;</span> */}
                   <Profile username={username} setShowProfile={setShowProfile} />
+                  <button type="button" onClick={closeModal}>Close</button>
                 </div>
               </div>
             </>
