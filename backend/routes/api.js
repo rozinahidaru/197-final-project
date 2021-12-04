@@ -44,6 +44,7 @@ router.post('/like', isAuthenticated, async (req, res, next) => {
   const { _id, likes } = req.body
   try {
     const pUpdated = await Post.findOneAndUpdate({ _id }, { likes }, { useFindAndModify: true })
+    console.log(pUpdated)
     res.send(`likes update success to post ${_id}`)
   } catch (err) {
     next('update like error')

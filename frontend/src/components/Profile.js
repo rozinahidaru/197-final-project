@@ -10,6 +10,8 @@ const Profile = props => {
   const [data, setData] = useState([])
   const [userPosts, setUserPosts] = useState([])
 
+  const modal = document.getElementById('myModal')
+
   useEffect(async () => {
     const intervalID = setInterval(async () => {
       try {
@@ -33,9 +35,17 @@ const Profile = props => {
 
   const handleClose = () => setShowProfile(false)
 
+  const showModal = () => {
+    modal.style.display = 'block'
+  }
+
+  const closeModal = () => {
+    modal.style.display = 'none'
+  }
+
   return (
     <>
-      <h3>
+      {/* <h3>
         {username}
         {'\'s '}
         posts
@@ -44,7 +54,29 @@ const Profile = props => {
       {userPosts.map(p => (
         <Post post={p} key={p._id} />
       ))}
-      <button type="button" onClick={handleClose}>Close</button>
+      <button type="button" onClick={handleClose}>Close</button> */}
+
+      <>
+        <button type="button" id="myBtn" onClick={showModal}>Open Modal</button>
+
+        <div id="myModal" className="modal">
+
+          <div className="modal-content">
+            {/* <span className="close" onClick={closeModal}>&times;</span> */}
+            <button type="button" className="close" onClick={closeModal}>Close</button>
+            <h3>
+              {username}
+              {'\'s '}
+              posts
+            </h3>
+
+            {userPosts.map(p => (
+              <Post post={p} key={p._id} />
+            ))}
+          </div>
+
+        </div>
+      </>
     </>
   )
 }

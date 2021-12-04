@@ -25,13 +25,18 @@ const Post = props => {
   // (add as bonus feature)
   const updateLikes = async () => {
     const currLikes = post.likes
+    console.log(currLikes)
     // if (currLikes === null) {
     //   currLikes = 0
     // }
+    // currLikes++
     setLikes(currLikes + 1)
+    console.log(currLikes)
+    console.log(likes)
 
     try {
-      await axios.post('posts/like', { _id: post._id, likes })
+      await axios.post('posts/like', { _id: post._id, currLikes })
+      console.log(post.likes)
     } catch (err) {
       alert('error when adding like')
     }
@@ -51,7 +56,7 @@ const Post = props => {
           </span>
         </h4> */}
           <p>{post.postText}</p>
-          {(post.likes)
+          {/* {(post.likes)
             ? (
               <p>
                 {post.likes}
@@ -61,7 +66,12 @@ const Post = props => {
             )
             : (
               <p>0 likes</p>
-            )}
+            )} */}
+          <p>
+            {post.likes}
+            {' '}
+            likes
+          </p>
           {(loggedIn) ? <button type="button" onClick={updateLikes}>Like</button>
             : null }
           <h4>
