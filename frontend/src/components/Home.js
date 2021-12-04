@@ -56,6 +56,18 @@ const Home = () => {
 
   const goToProfile = () => setShowProfile(true)
 
+  const modal = document.getElementById('myModal')
+
+  const showModal = () => {
+    setShowProfile(true)
+    modal.style.display = 'block'
+  }
+
+  const closeModal = () => {
+    modal.style.display = 'none'
+    setShowProfile(false)
+  }
+
   return (
     <>
       <h1>Instagram Lite</h1>
@@ -65,14 +77,24 @@ const Home = () => {
         {loggedIn
           ? (
             <>
-              <button type="button" onClick={goToProfile}>See your profile</button>
+              <button type="button" onClick={showModal}>See your profile</button>
               <br />
               <br />
               <button type="button" onClick={logoutUser}>Logout</button>
             </>
           )
           : null}
-        {showProfile ? <Profile username={username} setShowProfile={setShowProfile} />
+        {showProfile
+          ? (
+            <>
+              <div id="myModal" className="modal">
+                <div className="modal-content">
+                <span className="close" onClick={closeModal}>&times;</span>
+                  <Profile username={username} setShowProfile={setShowProfile} />
+                </div>
+              </div>
+            </>
+          )
           : null}
       </div>
 

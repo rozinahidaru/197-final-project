@@ -1,12 +1,15 @@
 /* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+// import Profile from './Profile'
 
 const Post = props => {
   const [data, setData] = useState([])
   const [comment, setComment] = useState('')
   const [likes, setLikes] = useState(0)
   const { loggedIn, post } = props
+
+  const [showProfile, setShowProfile] = useState(false)
 
   useEffect(async () => {
     const { data: posts } = await axios.get('/posts/')
@@ -42,31 +45,28 @@ const Post = props => {
     }
   }
 
+  const showModal = () => {
+    setShowProfile(true)
+  }
+
   return (
     <>
       <div style={{ borderStyle: 'outset', borderRadius: 25, display: 'inline-block' }}>
-        <h3><i>{post.author}</i></h3>
+        <div syle={{ display: 'inline-block' }}>
+          <h3><i>{post.author}</i></h3>
+          {/* <button type="button" className="profileButton">{post.author}</button>
+        <br /> */}
+          {/* <button type="button" onClick={showModal}>See Profile</button> */}
+        </div>
+
+        {/* {showProfile ? <Profile username={post.author} setShowProfile={setShowProfile} />
+          : null } */}
+
         <img src={post.photo} alt="" width="400" height="250" />
         <div style={{ marginLeft: 8 }}>
-          {/* <h4>
-          Author:
-          {' '}
-          <span style={{ fontWeight: 'normal' }}>
-            {post.author}
-          </span>
-        </h4> */}
+
           <p>{post.postText}</p>
-          {/* {(post.likes)
-            ? (
-              <p>
-                {post.likes}
-                {' '}
-                likes
-              </p>
-            )
-            : (
-              <p>0 likes</p>
-            )} */}
+
           <p>
             {post.likes}
             {' '}
