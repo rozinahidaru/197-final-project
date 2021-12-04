@@ -54,7 +54,7 @@ const Home = () => {
     }
   }
 
-  const goToProfile = () => setShowProfile(true)
+  // const goToProfile = () => setShowProfile(true)
 
   const modal = document.getElementById('myModal')
 
@@ -102,6 +102,8 @@ const Home = () => {
       {loggedIn
         ? <button type="button" onClick={() => setShow(true)}>Add a post</button>
         : <button type="button" onClick={() => navigate('/login')}>Log in to add a post</button>}
+
+      <button type="button" onClick={() => navigate('/discover')}>Discover</button>
 
       {show
         ? <AddPost setShow={setShow} />

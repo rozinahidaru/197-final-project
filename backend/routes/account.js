@@ -79,7 +79,6 @@ router.get('/:username?', async (req, res, next) => {
   const { username } = req.query // or param?
   try {
     const user = await User.findOne({ username })
-    console.log(user)
     // res.json(user)
   } catch (err) {
     next(`error getting user ${username}`)

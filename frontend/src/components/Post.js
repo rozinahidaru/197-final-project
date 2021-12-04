@@ -33,7 +33,6 @@ const Post = props => {
 
     try {
       await axios.post('posts/like', { _id: post._id, likes: currLikes })
-      console.log(post.likes)
     } catch (err) {
       alert('error when adding like')
     }

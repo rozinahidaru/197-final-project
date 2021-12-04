@@ -6,6 +6,7 @@ import App from './src/App'
 import Home from './src/components/Home'
 import Login from './src/components/Login'
 import Profile from './src/components/Profile'
+import ProfileList from './src/components/ProfileList'
 import Signup from './src/components/Signup'
 
 ReactDOM.render(
@@ -14,7 +15,7 @@ ReactDOM.render(
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/discover" element={<ProfileList />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('react-root'),
