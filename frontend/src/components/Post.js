@@ -44,7 +44,7 @@ const Post = props => {
 
   return (
     <>
-      <div style={{ borderStyle: 'outset', borderRadius: 25, display: 'inline-block' }}>
+      <div className="post" style={{ borderStyle: 'outset', borderRadius: 25, display: 'inline-block' }}>
         <div syle={{ display: 'inline-block' }}>
           <h3><i>{post.author}</i></h3>
           {/* <button type="button" className="profileButton">{post.author}</button>

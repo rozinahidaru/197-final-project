@@ -14,7 +14,7 @@ const Signup = () => {
     const { data } = await axios.post('/account/signup', { username, password })
     if (data === 'user signup success') {
       setSuccess(true)
-      navigate('../')
+      navigate('../login')
     } else {
       alert('signup error')
     }

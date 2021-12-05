@@ -73,6 +73,10 @@ const Profile = props => {
         {userPosts.map(p => (
           <Post post={p} key={p._id} />
         ))}
+        {userPosts.length === 0
+          ? <p>No posts yet</p>
+          : null}
+
         {/* <button type="button" onClick={handleClose}>Close</button> */}
       </>
     </>
